@@ -15,15 +15,15 @@ Run `python scripts/plot_templates.py <subcommand> --help` for the complete inte
 ## Production examples
 
 ```bash
-python skills/nature-figure/scripts/plot_templates.py volcano \
+python skills/scientific-figure/scripts/plot_templates.py volcano \
   --input results.csv --gene-col gene --effect-col log2fc --p-col padj \
   --output figures/volcano
 
-python skills/nature-figure/scripts/plot_templates.py roc \
+python skills/scientific-figure/scripts/plot_templates.py roc \
   --input roc.csv --fpr-col fpr --tpr-cols model_a,model_b \
   --output figures/roc
 
-python skills/nature-figure/scripts/plot_templates.py dotplot \
+python skills/scientific-figure/scripts/plot_templates.py dotplot \
   --input markers.csv --row-col cell_type --column-col gene \
   --size-col pct_exp --color-col avg_exp_scaled --output figures/markers
 ```

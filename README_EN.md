@@ -19,8 +19,8 @@ When using AI coding assistants for scientific data visualization, research team
 
 `scientific-figure` fundamentally redesigns scientific visualization with a **two-step, dual-contract, human-in-the-loop pipeline**:
 
-- **Step 1 (`nature-figure-blueprint`)**: Deconstructs reference claims, establishes statistical inference plans, defines aesthetics, and derives OpenSpec-grade code specifications (`blueprint.md` + `code_spec.md`) before any code is written.
-- **Step 2 (`nature-figure`)**: Consumes the approved blueprint and tidy stats tables to execute production-grade Python (matplotlib/seaborn) plotting, strictly enforcing Nature specifications (88/180 mm, Arial 5–7 pt, 0.5 pt inward ticks, default 300 DPI PNG), verifying font sizes with physical stream probes (`audit_pdf_text.py`), and generating publication-ready captions.
+- **Step 1 (`scientific-figure-blueprint`)**: Deconstructs reference claims, establishes statistical inference plans, defines aesthetics, and derives OpenSpec-grade code specifications (`blueprint.md` + `code_spec.md`) before any code is written.
+- **Step 2 (`scientific-figure`)**: Consumes the approved blueprint and tidy stats tables to execute production-grade Python (matplotlib/seaborn) plotting, strictly enforcing Nature specifications (88/180 mm, Arial 5–7 pt, 0.5 pt inward ticks, default 300 DPI PNG), verifying font sizes with physical stream probes (`audit_pdf_text.py`), and generating publication-ready captions.
 
 ---
 
@@ -32,7 +32,7 @@ scientific-figure/
 ├── README_EN.md                       # English Documentation
 ├── LICENSE                            # MIT License
 ├── .gitignore                         # Git exclusion rules
-├── nature-figure-blueprint/           # [Step 1] Planning & Code Spec Engine
+├── scientific-figure-blueprint/           # [Step 1] Planning & Code Spec Engine
 │   ├── SKILL.md                       # Execution protocol
 │   ├── static/                        # Static contract templates
 │   │   ├── blueprint_template.md      # Scientific blueprint template
@@ -42,7 +42,7 @@ scientific-figure/
 │   │   └── journal-specifications.md  # 88/180 mm physical dimensions & specs
 │   └── scripts/
 │       └── stat_check.py              # Automated normality & homoscedasticity checks
-└── nature-figure/                     # [Step 2] Production Plotting & QA Engine
+└── scientific-figure/                     # [Step 2] Production Plotting & QA Engine
     ├── SKILL.md                       # Execution protocol & QA preflight
     ├── manifest.yaml                  # Dynamic condition router
     ├── README.md                      # Sub-skill guide

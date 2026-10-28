@@ -7,7 +7,7 @@ require a CSV input. Simulated data is available only through the explicit
 
 The template families and adaptation safeguards were informed by the
 Apache-2.0 academic-figure-skill asset collection. This implementation is
-portable, path-independent, and designed for the nature-figure contract.
+portable, path-independent, and designed for the scientific-figure contract.
 """
 
 from __future__ import annotations

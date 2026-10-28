@@ -1,5 +1,5 @@
 {
-  "skill_name": "nature-figure",
+  "skill_name": "scientific-figure",
   "evals": [
     {
       "id": "backend-exclusivity-r-missing-runtime",
@@ -132,11 +132,11 @@
     {
       "id": "trigger-publication-figure-chinese",
       "prompt": "用我的实验数据做一张论文用的分组小提琴图，要求可编辑 PDF 和 600 dpi TIFF。",
-      "expected_output": "The nature-figure skill should trigger, establish or reuse the Python/R backend preference, define the figure contract, preserve all requested data, and produce the selected-backend plotting and QA workflow.",
+      "expected_output": "The scientific-figure skill should trigger, establish or reuse the Python/R backend preference, define the figure contract, preserve all requested data, and produce the selected-backend plotting and QA workflow.",
       "assertions": [
         {
           "name": "publication_figure_triggered",
-          "description": "A Chinese manuscript-figure request with vector/raster export requirements routes to nature-figure."
+          "description": "A Chinese manuscript-figure request with vector/raster export requirements routes to scientific-figure."
         }
       ],
       "files": []
@@ -160,11 +160,11 @@
     {
       "id": "do-not-trigger-statistics-only",
       "prompt": "Run a two-way ANOVA, calculate adjusted p values, and write the statistical result. Do not make a figure.",
-      "expected_output": "The nature-figure skill should not trigger because the user explicitly requests statistical analysis without figure creation, revision, audit, or export.",
+      "expected_output": "The scientific-figure skill should not trigger because the user explicitly requests statistical analysis without figure creation, revision, audit, or export.",
       "assertions": [
         {
           "name": "statistics_only_excluded",
-          "description": "Statistics-only work routes to an analysis/statistics capability rather than nature-figure."
+          "description": "Statistics-only work routes to an analysis/statistics capability rather than scientific-figure."
         }
       ],
       "files": []
@@ -172,11 +172,11 @@
     {
       "id": "do-not-trigger-interactive-dashboard",
       "prompt": "Build an interactive Plotly sales dashboard with filters for our internal website.",
-      "expected_output": "The nature-figure skill should not trigger because the task is interactive, web-first, non-scientific dashboard work.",
+      "expected_output": "The scientific-figure skill should not trigger because the task is interactive, web-first, non-scientific dashboard work.",
       "assertions": [
         {
           "name": "interactive_dashboard_excluded",
-          "description": "Interactive web/dashboard requests remain outside nature-figure."
+          "description": "Interactive web/dashboard requests remain outside scientific-figure."
         }
       ],
       "files": []
@@ -184,11 +184,11 @@
     {
       "id": "do-not-trigger-photo-edit-only",
       "prompt": "Crop this microscopy photo and increase its contrast. I am not assembling or auditing a manuscript figure.",
-      "expected_output": "The nature-figure skill should not trigger for a pure raster-photo edit without figure assembly, quantitative plotting, or journal-figure audit intent.",
+      "expected_output": "The scientific-figure skill should not trigger for a pure raster-photo edit without figure assembly, quantitative plotting, or journal-figure audit intent.",
       "assertions": [
         {
           "name": "photo_edit_only_excluded",
-          "description": "Pure image editing routes to an image-editing capability rather than nature-figure."
+          "description": "Pure image editing routes to an image-editing capability rather than scientific-figure."
         }
       ],
       "files": []

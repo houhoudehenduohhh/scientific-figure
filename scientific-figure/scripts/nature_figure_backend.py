@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read or write the user's default nature-figure plotting backend."""
+"""Read or write the user's default scientific-figure plotting backend."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ def config_path() -> Path:
     override = os.environ.get("NATURE_FIGURE_CONFIG")
     if override:
         return Path(override).expanduser()
-    return Path("~/.config/nature-skills/nature-figure.json").expanduser()
+    return Path("~/.config/nature-skills/scientific-figure.json").expanduser()
 
 
 def read_config(path: Path) -> dict:
@@ -26,9 +26,9 @@ def read_config(path: Path) -> dict:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        raise SystemExit(f"Invalid nature-figure config JSON at {path}: {exc}") from exc
+        raise SystemExit(f"Invalid scientific-figure config JSON at {path}: {exc}") from exc
     if not isinstance(data, dict):
-        raise SystemExit(f"Invalid nature-figure config at {path}: expected object")
+        raise SystemExit(f"Invalid scientific-figure config at {path}: expected object")
     return data
 
 

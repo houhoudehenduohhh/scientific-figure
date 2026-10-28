@@ -1,6 +1,6 @@
 # Scientific Figure & Statistical Blueprint Template (科研图表与统计分析蓝图规范)
 
-> **铁律**：本文件由 `nature-figure-blueprint` 自动生成，归档于 `markdown/<step>/<fig_name>_blueprint.md`。必须经人工审查签署通过后，方可交付 `nature-figure` 编写绘图代码。  
+> **铁律**：本文件由 `scientific-figure-blueprint` 自动生成，归档于 `markdown/<step>/<fig_name>_blueprint.md`。必须经人工审查签署通过后，方可交付 `scientific-figure` 编写绘图代码。  
 > **语言约束**：本蓝图文件的**所有论述、解读、推断方案与文字描述必须 100% 使用中文输出**；仅保留英文代码标识符、数据表字段名与标准统计术语。
 
 ---

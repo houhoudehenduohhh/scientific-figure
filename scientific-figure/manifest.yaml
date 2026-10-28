@@ -1,4 +1,4 @@
-name: nature-figure
+name: scientific-figure
 version: 2.5.0
 description: >
   Declarative manifest for the static/dynamic split. SKILL.md uses this to
@@ -28,7 +28,7 @@ routes:
 preference:
   backend_script: scripts/nature_figure_backend.py
   config_env: NATURE_FIGURE_CONFIG
-  default_config: ~/.config/nature-skills/nature-figure.json
+  default_config: ~/.config/nature-skills/scientific-figure.json
   behavior: |
     For plotting tasks, first honor an explicit Python/R choice, then a clearly
     language-specific input workflow, then the saved preference returned by the

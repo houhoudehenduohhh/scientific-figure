@@ -25,7 +25,7 @@
                                           │
        ┌──────────────────────────────────┴──────────────────────────────────┐
        ▼                                                                     ▼
-【第 1 步: nature-figure-blueprint】                      【第 2 步: nature-figure】
+【第 1 步: scientific-figure-blueprint】                      【第 2 步: scientific-figure】
  (规划蓝图与代码工程规格引擎)                               (依规出图与物理字号质检引擎)
        │                                                                     ▲
        ├───────► 文档 1: 【figX_blueprint.md】                               │
@@ -43,14 +43,14 @@
 
 ## 二、 双 Skill 核心职能分工
 
-### 1. `nature-figure-blueprint` (Step 1: 规划蓝图与代码规格引擎)
+### 1. `scientific-figure-blueprint` (Step 1: 规划蓝图与代码规格引擎)
 - **触发时机**：用户提供「范文参考图 + 原始数据」时率先触发；
 - **核心成果物**：物理生成两份独立的 Markdown 文档，彻底释放模型 Token 算力：
   - **`figX_blueprint.md`**：面向科研人员。深入解构范文证据链（Panel a, b, c...），制定严格的统计推断方案（检验方法、效应量、95% CI、异常值截断口径），规划图件在 Nature 尺寸（单栏 88mm、双栏 180mm）下的视觉拓扑；
   - **`figX_code_spec.md`**：面向代码工程师与审查者。基于 OpenSpec 理念，确立**数理不变性公式**、**反向红线（禁止项）**、**大数据列投影防 OOM 设计**，以及**带可执行断言（`assert`）的原子 Tasks 清单**。
 - **人机门禁 (Blocking Gate)**：暂停流程，向用户汇报关键规划摘要，必须经人工审查签署后，方可进入编码阶段。
 
-### 2. `nature-figure` (Step 2: 出版级出图与物理质检引擎)
+### 2. `scientific-figure` (Step 2: 出版级出图与物理质检引擎)
 - **触发时机**：用户在第一步中确认通过双门禁后触发；
 - **核心执行闭环**：
   - **只读中间契约表**：严格消费统计步骤输出的标准化 Tidy Stats 数据表，**严禁在绘图脚本中临时重算统计模型或 P 值**；
@@ -70,7 +70,7 @@ scientific-figure/
 ├── README_EN.md                       # English Documentation
 ├── LICENSE                            # MIT License
 ├── .gitignore                         # 规范 Git 忽略规则
-├── nature-figure-blueprint/           # [Skill 1] 规划蓝图与代码规格引擎
+├── scientific-figure-blueprint/           # [Skill 1] 规划蓝图与代码规格引擎
 │   ├── SKILL.md                       # 调度协议与执行路由
 │   ├── static/                        # 静态模板契约
 │   │   ├── blueprint_template.md      # 科学视觉蓝本模板 (5 部分)
@@ -80,7 +80,7 @@ scientific-figure/
 │   │   └── journal-specifications.md  # 期刊排版几何与物理尺寸规范 (88/180mm)
 │   └── scripts/
 │       └── stat_check.py              # 正态性与方差齐性快速审计工具
-└── nature-figure/                     # [Skill 2] 出版级出图与物理质检引擎
+└── scientific-figure/                     # [Skill 2] 出版级出图与物理质检引擎
     ├── SKILL.md                       # 出图调度协议与门禁校验
     ├── manifest.yaml                  # 动态条件路由总清单
     ├── README.md                      # 子技能中英文文档
@@ -126,7 +126,7 @@ python -m venv .venv
 git clone https://github.com/houhoudehenduohhh/scientific-figure.git .agents/skills/scientific-figure
 ```
 在与 AI 结对编程时，直接提示：
-> “请参考【范文图片路径】以及【数据文件路径】，调用 `nature-figure-blueprint` 生成规划蓝图与代码工程规范。”
+> “请参考【范文图片路径】以及【数据文件路径】，调用 `scientific-figure-blueprint` 生成规划蓝图与代码工程规范。”
 
 ---
 

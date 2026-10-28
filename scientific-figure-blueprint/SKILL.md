@@ -1,5 +1,5 @@
 ---
-name: nature-figure-blueprint
+name: scientific-figure-blueprint
 description: >-
   顶刊科研绘图与数据分析规划蓝图引擎（两步走之第 1 步）。在编写任何绘图代码前触发。负责接收用户原始数据与范文参考图，解构范文科学论断与视觉语法，制定数据分析与统计假设检验方案（含 Tidy 数据契约），规划绘图大纲与物理尺寸，并通过 OpenSpec 理念完成代码工程规格说明（数理公式、反向红线、原子任务与可验证断言），自动生成双 Markdown 文档（blueprint.md + code_spec.md）供人机对齐与审查门禁签署。
 ---
@@ -12,7 +12,7 @@ description: >-
 ```
 [输入: 用户原始数据 + 范文参考图]
                ↓
-    【nature-figure-blueprint】(Step 1 规划与规格引擎)
+    【scientific-figure-blueprint】(Step 1 规划与规格引擎)
        ├── 1. 范文深度解构 (科学论断 + 视觉通道 + 排版拓扑)
        ├── 2. 数据分析方案 (假设检验 + 效应量 + Tidy 契约表 Schema)
        ├── 3. 目标绘图大纲 (本地字段映射 + 88/180mm 尺寸 + 色彩体系)
@@ -33,7 +33,7 @@ description: >-
           (科学结论 + 代码约束双确认通过)
                        │
                        ▼
-【nature-figure】(Step 2: 严格依照 code_spec.md 的 Tasks 逐项落代码出图)
+【scientific-figure】(Step 2: 严格依照 code_spec.md 的 Tasks 逐项落代码出图)
 ```
 
 ---
@@ -82,4 +82,4 @@ description: >-
    `markdown/<step_dir>/<fig_name>_code_spec.md`
 3. **【语言约束】**：两个文档的**所有分析论述、算法说明、边界描述与审查清单必须 100% 使用中文书写**，仅保留英文代码标识符、数据表字段名与标准统计术语。
 4. **强制门禁中断**：向用户结构化呈现科学结论与代码红线摘要，提示用户审查。
-5. **严禁越权**：在获得用户显式确认通过前，**严禁**自动触发第二步（`nature-figure`）编写绘图代码！
+5. **严禁越权**：在获得用户显式确认通过前，**严禁**自动触发第二步（`scientific-figure`）编写绘图代码！

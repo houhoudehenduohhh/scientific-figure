@@ -1,6 +1,6 @@
 # Scientific Code Specification & Tasks Template (科学计算与绘图代码工程规范模板)
 
-> **铁律**：本文件由 `nature-figure-blueprint` 自动生成，归档于 `markdown/<step>/<fig_name>_code_spec.md`。依据 OpenSpec 形式化规范理念，确立代码审查硬边界。必须经人工审查签署通过后，方可由第二步进行脚本编写。  
+> **铁律**：本文件由 `scientific-figure-blueprint` 自动生成，归档于 `markdown/<step>/<fig_name>_code_spec.md`。依据 OpenSpec 形式化规范理念，确立代码审查硬边界。必须经人工审查签署通过后，方可由第二步进行脚本编写。  
 > **语言约束**：本规范的**所有规则、算法推导、边界说明与约束阐述必须 100% 使用中文输出**；仅保留英文代码标识符、数据表字段名、文件路径与标准统计术语。
 
 ---
