@@ -1,10 +1,16 @@
 ---
 name: scientific-figure
 description: >-
-  顶刊科研绘图与成果导出引擎（两步走之第 2 步）。在已获得用户审查确认的 Figure Blueprint 蓝图指导下触发。负责依据 approved blueprint.md 与 Tidy Stats 中间表，编写并执行生产级 Python (matplotlib/seaborn) 绘图脚本，严格落实 88/180mm、Arial 5–7pt、0.5pt 轴线向内刻度与默认 300 DPI PNG 导出，并执行底线字号物理审计与 Nature 级图例文本生成。
+  顶刊科研绘图与成果导出引擎（两步走之第 2 步）。仅在用户已于独立轮次明确审查确认（Sign-off）Figure Blueprint 蓝图与 Code Spec 规格后方可触发。严禁与 Step 1 蓝图规划在同轮次中贪婪连带执行。负责依据 approved blueprint.md 与 Tidy Stats 中间表，编写并执行生产级 Python (matplotlib/seaborn) 绘图脚本，严格落实 88/180mm、Arial 5–7pt、0.5pt 轴线向内刻度与默认 300 DPI PNG 导出，并执行底线字号物理审计与 Nature 级图例文本生成。
 ---
 
 # Nature 顶刊科研出图与质检引擎 (Step 2 Production Plotter)
+
+> [!IMPORTANT]
+> **执行准入双门禁硬约束 (Pre-execution Gate & Anti-Greedy Mutual Lock)**:
+> 本技能绝对禁止在未经用户显式确认蓝图的情况下被触发或隐式串联执行！
+> 1. **拒绝同轮贪婪执行**：若当前对话轮次才刚刚完成 Step 1 (`scientific-figure-blueprint`) 的生成，或者用户提问同时包含了规划与出图指令，AI **绝对禁止在同一轮次中紧接着调用本技能或编写任何绘图代码**。
+> 2. **前置门禁未通过即中断**：如果尚未在先前的独立轮次中由用户明确回复“确认/通过/批准/同意蓝图”，必须立即终止执行并提示用户先完成 Step 1 的蓝图与规格审查。
 
 本技能为 **「Nature 顶刊科研出图流水线」的第二步 (Step 2: Production Plotting & QA)」**。  
 **前置硬约束**：本技能必须以 **第 1 步 (`scientific-figure-blueprint`) 生成并经用户双门禁确认的 Blueprint MD 与 Code Spec MD** 为唯一输入！严禁脱离规划蓝图与代码规范随意编写绘图代码。
@@ -31,8 +37,9 @@ description: >-
 
 ### 1. 前置双门禁校验 (Pre-requisite Gate)
 - 检查是否存在当前图件的规划文件 `markdown/<step>/<fig_name>_blueprint.md` 与代码规范文件 `markdown/<step>/<fig_name>_code_spec.md`；
-- **若不存在或未确认**：立即提示用户先调用 `scientific-figure-blueprint` 完成双文生成与人机对齐门禁；
-- **若已确认**：读取 `blueprint.md` 中的科学论断与视觉映射，读取 `code_spec.md` 中的数理公式、反向红线与 Tasks 任务清单。
+- **若不存在或未确认**：立即终止执行，提示用户先调用 `scientific-figure-blueprint` 完成双文生成与人机对齐门禁；
+- **严禁跨步注入**：若用户在同一提示词中混合了“规划蓝图并直接画出来”，必须先完成 Step 1 停机，严禁直接进入 Step 2；
+- **若已在独立轮次确认**：读取 `blueprint.md` 中的科学论断与视觉映射，读取 `code_spec.md` 中的数理公式、反向红线与 Tasks 任务清单。
 
 ### 2. 确认绘图后端与环境配置
 - 强制使用项目虚拟环境解释器：优先检测 `.\.venv\Scripts\python.exe`；
