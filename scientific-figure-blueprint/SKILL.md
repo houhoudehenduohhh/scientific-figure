@@ -1,7 +1,7 @@
 ---
 name: scientific-figure-blueprint
 description: >-
-  顶刊科研绘图与数据分析规划蓝图引擎（两步走之第 1 步）。在编写任何绘图代码前触发。即便用户要求“直接画图/写脚本”，也必须严格受限于规划边界，仅负责接收用户原始数据与范文参考图，解构范文科学论断与视觉语法，制定数据分析与统计假设检验方案（含 Tidy 数据契约），规划绘图大纲与物理尺寸，并通过 OpenSpec 理念完成代码工程规格说明（数理公式、反向红线、原子任务与可验证断言），自动生成双 Markdown 文档（blueprint.md + code_spec.md）。生成后必须无条件停机等待人工审查门禁签署，严禁直接编写绘图代码！
+  顶刊科研绘图与数据分析规划蓝图引擎（两步走之第 1 步）。在编写任何绘图代码前触发。即便用户要求“直接画图/写脚本”，也必须严格受限于规划边界，仅负责接收用户原始数据与范文参考图，解构范文科学论断与视觉语法，执行真实数据结构与质量诊断（缺失率、异常值P99截断与数据处理建议），制定推断统计方案与Tidy契约，规划绘图大纲与物理尺寸，并通过 OpenSpec 理念完成代码工程规格说明（数理公式、反向红线、原子任务与可验证断言），自动生成双 Markdown 文档（blueprint.md + code_spec.md）。生成后必须无条件停机等待人工审查门禁签署，严禁直接编写绘图代码！
 ---
 
 # Nature 科研图件与代码规格蓝图引擎 (Step 1 Blueprint Engine)
@@ -21,9 +21,10 @@ description: >-
                ↓
     【scientific-figure-blueprint】(Step 1 规划与规格引擎)
        ├── 1. 范文深度解构 (科学论断 + 视觉通道 + 排版拓扑)
-       ├── 2. 数据分析方案 (假设检验 + 效应量 + Tidy 契约表 Schema)
-       ├── 3. 目标绘图大纲 (本地字段映射 + 88/180mm 尺寸 + 色彩体系)
-       └── 4. OpenSpec 代码工程规格推演 (数理不变性 + 反向红线 + 原子 Tasks)
+       ├── 2. 数据结构与质量探查 (规模/类型/NZV + 缺失率 + 异常值P99截断建议)
+       ├── 3. 数据分析方案 (假设检验 + 效应量 + Tidy 契约表 Schema)
+       ├── 4. 目标绘图大纲 (本地字段映射 + 88/180mm 尺寸 + 色彩体系)
+       └── 5. OpenSpec 代码工程规格推演 (数理不变性 + 反向红线 + 原子 Tasks)
                ↓
        ┌───────┴───────┐ (物理拆分生成，保证各自拥有 100% 充沛 Token)
        ▼               ▼
@@ -55,19 +56,32 @@ description: >-
 2. **图表语法**：识别图表原型（散点/样条/小提琴/森林图/热图）、坐标系刻度（线性/对数）、分组色块及离散度表达形式（误差棒/阴影置信带）；
 3. **空间拓扑**：分析多面板网格排布比例（例如 $2 \times 2$ 均分、或非对称 Hero Layout）。
 
-### 2. 数据分析方案与统计契约制定 (Statistical Plan)
+### 2. 数据结构探查、缺失值与异常值质量评估 (Data Structure & Quality Audit)
+在编制蓝图前，必须对本地输入数据实施真实探查：
+1. **运行真实质量探查**：调用 `python .agents/skills/scientific-figure-blueprint/scripts/stat_check.py --data <数据路径> --audit-data` 获取底层诊断指标；
+2. **数据结构与维度探查**：提取总样本量 $N$、特征数 $K$、内存占用、主键重复率，排查常量与近零方差 (NZV) 字段；
+3. **缺失值诊断与样本留存**：
+   - 统计关键字段缺失率，评估完整案例分析 (Complete-case) 的样本留存率；
+   - 确立缺失处理建议（MCAR 过滤打印丢弃日志 / 中位数插补 / 多重插补 MICE / 排除高缺失变量）；
+4. **异常值检验与截断策略**：
+   - 提取分位数分布 (P1, P5, Q25, Median, Q75, P95, P99, Max) 与偏度 (Skewness)；
+   - 基于 Tukey IQR 准则与极端上尾分位数识别离群值，检查物理合法域（如负值、超限率）；
+   - 明确处理建议：采用 P99 / P99.5 上界缩尾截断 (Winsorization) 或 $\ln(x+1)$ 尺度规整；
+5. **输出数据预处理落地指引**：在蓝图第二部分明确生成清洗清单，供后续代码规格直接继承。
+
+### 3. 数据分析方案与统计契约制定 (Statistical Plan)
 参考 `references/nature-statistics-contract.md` 制定严格推断统计方案：
-1. **假设前提探查**：若数据已就绪，可调用 `scripts/stat_check.py` 探查正态性 (Shapiro-Wilk) 与方差齐性 (Levene)；
+1. **假设前提探查**：调用 `scripts/stat_check.py` 探查正态性 (Shapiro-Wilk / D'Agostino-Pearson) 与方差齐性 (Levene)；
 2. **统计检验选型**：锁定检验方法（如 Welch's t-test、Kruskal-Wallis、Cox 比例风险回归）；
 3. **锁定 Tidy 中间数据契约**：明确要求后续分析脚本必须导出标准中间表（包含 `estimate, se, ci_lower, ci_upper, p_val, n, test_name`），严禁绘图脚本临时重算统计模型。
 
-### 3. 目标图件排版设计与本地数据映射 (Target Plotting Design)
+### 4. 目标图件排版设计与本地数据映射 (Target Plotting Design)
 参考 `references/journal-specifications.md` 确定物理规格：
 1. **本地科学论点**：根据范文逻辑，预判本地数据应得出的科学结论；
 2. **字段-视觉通道映射**：明确定义本地数据表具体哪个列绑定至 X 轴、Y 轴、颜色分组与子面板；
 3. **期刊物理尺寸**：锁定单栏 88 mm、1.5 栏 120 mm 或双栏 180 mm；确定 Arial 5–7 pt、0.5 pt 线宽与默认导出 300 DPI PNG。
 
-### 4. 数据物理探查与 OpenSpec 代码工程规格推演 (Code Specs Derivation)
+### 5. OpenSpec 代码工程规格推演 (Code Specs Derivation)
 在编写 `code_spec.md` 前，必须执行真实的元数据与工程边界探查：
 1. **元数据物理探查**：检查输入表实际 Schema、确切列名、行数规模及缺失率；
 2. **确立数理不变性 (Invariants)**：写出加权或聚合数学公式；锁定异常值截断算法（如 P99 上界截断时机与范围）；
@@ -80,7 +94,7 @@ description: >-
 4. **技术架构防御**：大数据量下强制采用列投影下推（`columns=[...]`），限制内存峰值；
 5. **编译原子任务清单 (Tasks)**：拆解为 3~4 个原子任务，每个任务配备明确的程序化断言条件（`assert ...`）。
 
-### 5. 双文件物理拆分输出与双门禁审查 (Dual-Contract Review Gate)
+### 6. 双文件物理拆分输出与双门禁审查 (Dual-Contract Review Gate)
 为彻底杜绝 Output Token 挤压，必须物理分离输出两个 Markdown 文件：
 
 1. **生成科学蓝本**：依据 `static/blueprint_template.md` 渲染生成：
