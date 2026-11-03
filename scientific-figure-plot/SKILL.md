@@ -1,5 +1,5 @@
 ---
-name: scientific-figure
+name: scientific-figure-plot
 description: >-
   顶刊科研绘图与成果导出引擎（两步走之第 2 步）。仅在用户已于独立轮次明确审查确认（Sign-off）Figure Blueprint 蓝图与 Code Spec 规格后方可触发。严禁与 Step 1 蓝图规划在同轮次中贪婪连带执行。负责依据 approved blueprint.md 与 Tidy Stats 中间表，编写并执行生产级 Python (matplotlib/seaborn) 绘图脚本，严格落实 88/180mm、Arial 5–7pt、0.5pt 轴线向内刻度与默认 300 DPI PNG 导出，并执行底线字号物理审计与 Nature 级图例文本生成。
 ---
@@ -20,7 +20,7 @@ description: >-
 [输入 2: 经确认的 markdown/<step>/<fig_name>_code_spec.md (OpenSpec代码工程规范与Tasks)]
 [输入 3: 中间数据契约表 Dataset/<step>/stats_results_<name>.parquet]
                ↓
-    【scientific-figure】(Step 2 执行出图)
+    【scientific-figure-plot】(Step 2 执行出图)
        ├── 1. 读取 blueprint.md 中的「视觉映射」与「物理尺寸」
        ├── 2. 对照 code_spec.md 的 Tasks 清单逐项编写并断言自测
        ├── 3. 严格遵循反向红线 (严禁临时重算统计，全英文日志)

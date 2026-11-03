@@ -17,10 +17,10 @@ When using AI coding assistants for scientific data visualization, research team
 3. **Output Token Exhaustion**: Cramming scientific rationale, aesthetic mapping, and code specifications into a single turn forces the model to heavily compress code engineering constraints.
 4. **Lack of Preflight Quality Assurance**: No automated mechanism checks for out-of-memory risks on large datasets, silent NaN drops, or text falling below the journal font size limit (<5 pt).
 
-`scientific-figure` fundamentally redesigns scientific visualization with a **two-step, dual-contract, human-in-the-loop pipeline**:
+`scientific-figure-plot` fundamentally redesigns scientific visualization with a **two-step, dual-contract, human-in-the-loop pipeline**:
 
 - **Step 1 (`scientific-figure-blueprint`)**: Deconstructs reference claims, establishes statistical inference plans, defines aesthetics, and derives OpenSpec-grade code specifications (`blueprint.md` + `code_spec.md`) before any code is written.
-- **Step 2 (`scientific-figure`)**: Consumes the approved blueprint and tidy stats tables to execute production-grade Python (matplotlib/seaborn) plotting, strictly enforcing Nature specifications (88/180 mm, Arial 5–7 pt, 0.5 pt inward ticks, default 300 DPI PNG), verifying font sizes with physical stream probes (`audit_pdf_text.py`), and generating publication-ready captions.
+- **Step 2 (`scientific-figure-plot`)**: Consumes the approved blueprint and tidy stats tables to execute production-grade Python (matplotlib/seaborn) plotting, strictly enforcing Nature specifications (88/180 mm, Arial 5–7 pt, 0.5 pt inward ticks, default 300 DPI PNG), verifying font sizes with physical stream probes (`audit_pdf_text.py`), and generating publication-ready captions.
 
 ---
 

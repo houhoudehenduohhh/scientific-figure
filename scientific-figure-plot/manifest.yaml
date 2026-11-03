@@ -1,4 +1,4 @@
-name: scientific-figure
+name: scientific-figure-plot
 version: 2.5.0
 description: >
   Declarative manifest for the static/dynamic split. SKILL.md uses this to
