@@ -1,0 +1,11 @@
+name: figure-code-audit
+version: 1.0.0
+description: "顶刊科研绘图代码多智能体独立审计引擎（流水线中间门禁）"
+author: "Antigravity Research Team"
+tags:
+  - figure-code-audit
+  - multi-agent-audit
+  - code-review
+  - nature-specs
+  - openspec
+entrypoint: SKILL.md
