@@ -7,17 +7,20 @@ Create or revise the current Figure Spec and Figure Code Spec, then stop for exp
 ## Procedure
 
 1. Inspect the research or communication objective, available data or approved result artifacts, existing project conventions, optional reference images, and current specs.
-2. Separate confirmed facts, user decisions, proposals, assumptions, and open questions.
-3. Decide whether the figure is inferential, descriptive, predictive, mechanistic, spatial, image based, or mixed. Do not assume a statistical result is needed for every figure.
-4. Map each panel and visual channel to a scientific or communication purpose.
-5. Record data source, analysis unit, transformations, uncertainty expression, accessibility needs, audience, output format, and the default or overridden publication profile.
-6. Translate the design into a Figure Code Spec with input contracts, backend, transformations, visual mappings, geometry, artifacts, reproducibility, and QA tasks.
-7. Overwrite the current specs with `status: draft`, summarize decisions and open questions, and stop.
+2. Establish source-data identity before designing the figure: exact file, table, service, or approved result artifact; canonical path or URI; version, release, or timestamp; provenance; scope and population; schema; and the reason it is eligible for this figure. Compare candidate inputs and explicitly reject stale, incomplete, duplicated, synthetic, or unrelated alternatives.
+3. Separate confirmed facts, user decisions, proposals, assumptions, and open questions.
+4. Decide whether the figure is inferential, descriptive, predictive, mechanistic, spatial, image based, or mixed. Do not assume a statistical result is needed for every figure.
+5. Map each panel and visual channel to a scientific or communication purpose.
+6. Record data source, analysis unit, transformations, uncertainty expression, accessibility needs, audience, output format, and the default or overridden publication profile.
+7. Translate the design into a Figure Code Spec with input contracts, backend, transformations, visual mappings, geometry, artifacts, reproducibility, and QA tasks.
+8. Overwrite the current specs with `status: draft`, summarize decisions and open questions, and stop.
 
 ## Data and reference inspection
 
 Read-only inspection is allowed for data schemas, result tables, existing figures, and reference images. It produces evidence for the Spec. It does not automatically choose a model, outlier rule, test, or visual encoding.
 
 ## Gate
+
+The Spec Gate remains closed until source-data identity and eligibility are recorded and any material ambiguity is resolved. Do not use a convenient or previously seen file merely because its schema looks compatible.
 
 Do not write production plotting code, render a final figure, or alter the analysis population in this stage.

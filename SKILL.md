@@ -34,6 +34,7 @@ Reference images are optional. If supplied, analyze them; if absent, design from
 - Keep one current Figure Spec and one current Figure Code Spec. Overwrite them during revision.
 - A substantive edit resets `status: draft`, clears `approved_at`, and invalidates downstream audit and render clearance.
 - Build requires explicit approval of both current specs.
+- Both specs must identify the exact source data or approved result artifacts before approval. An unverified, stale, incomplete, or out-of-scope input blocks the Spec Gate.
 - Audit reviews the exact current specs and the exact draft code.
 - Audit completion and audit acceptance are separate states. A generated `PASS` or `PASS_WITH_NOTES` report is not user acceptance.
 - After producing or revising an audit report, stop and present the independent findings, reconciliation, overall status, and required return stage. Do not repair code, revise specs, re-audit, or render in the same turn unless the user gives a new decision.

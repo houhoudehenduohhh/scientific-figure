@@ -30,6 +30,8 @@
 ## Inputs and contracts
 
 - Files and schemas:
+- Source-data identity and version must match the approved Figure Spec:
+- Provenance, scope, and eligibility checks:
 - Required fields:
 - Valid domains:
 - Population and ordering rules:

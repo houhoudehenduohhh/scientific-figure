@@ -20,6 +20,18 @@
 - Main panel or hierarchy:
 - Optional reference image and what it contributes:
 
+## Source-data identity and eligibility
+
+- Exact source file, table, service, or approved result artifact:
+- Canonical path or URI:
+- Version, release, extraction date, or last-modified timestamp:
+- Provenance and ownership:
+- Scope, population, time window, and geography:
+- Schema/profile evidence inspected:
+- Why this input is eligible for the current figure:
+- Candidate inputs rejected and reasons (stale, incomplete, duplicated, synthetic, unrelated, or other):
+- User confirmation required:
+
 ## Data mapping
 
 - Data or approved result artifacts:
