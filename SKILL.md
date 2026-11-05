@@ -13,8 +13,8 @@ Use one current Figure Spec and one current Figure Code Spec to drive a four-sta
 |---|---|---|
 | No approved figure specs or the user is revising the design | Figure Spec | [references/spec-stage.md](references/spec-stage.md) |
 | Both specs are approved and draft plotting code is requested or missing | Build | [references/build-stage.md](references/build-stage.md) |
-| Draft plotting code exists but has not passed independent review | Audit | [references/audit-stage.md](references/audit-stage.md) |
-| Audit passed and rendering is authorized | Render & QA | [references/render-qa-stage.md](references/render-qa-stage.md) |
+| Draft plotting code exists and the current audit has not received a user decision | Audit | [references/audit-stage.md](references/audit-stage.md) |
+| Audit is accepted by the user and rendering is explicitly authorized | Render & QA | [references/render-qa-stage.md](references/render-qa-stage.md) |
 
 Complete only the earliest stage whose gate is incomplete. A request that combines planning and rendering stops at the current Spec gate.
 
@@ -35,7 +35,9 @@ Reference images are optional. If supplied, analyze them; if absent, design from
 - A substantive edit resets `status: draft`, clears `approved_at`, and invalidates downstream audit and render clearance.
 - Build requires explicit approval of both current specs.
 - Audit reviews the exact current specs and the exact draft code.
-- Render & QA requires an accepted audit, matching code, and explicit authorization.
+- Audit completion and audit acceptance are separate states. A generated `PASS` or `PASS_WITH_NOTES` report is not user acceptance.
+- After producing or revising an audit report, stop and present the independent findings, reconciliation, overall status, and required return stage. Do not repair code, revise specs, re-audit, or render in the same turn unless the user gives a new decision.
+- Render & QA requires `audit_user_decision: accepted` for the exact current audit, plus explicit authorization to render. Phrases such as “continue”, “fix it”, or a bundled planning and rendering request do not satisfy this condition.
 - `SPEC_DEFECT` returns to Figure Spec; code or render defects return to Build.
 
 ## Stable publication defaults

@@ -39,7 +39,9 @@ For each finding record:
 
 - status: `BLOCKED | CHANGES_REQUIRED | PASS_WITH_NOTES | PASS`
 - required return stage:
-- render authorized by audit: no
+- audit_report_status: complete
+- audit_user_decision: pending
+- render_authorized_by_user: no
 
 ## User decision
 
