@@ -59,8 +59,10 @@ Return specification defects to Figure Spec and implementation or rendering defe
 Write the audit report with these explicit states:
 
 - `audit_report_status: complete`;
+- `audit_id: <unique identifier for the exact current specs and code>`;
 - `audit_overall_status: BLOCKED | CHANGES_REQUIRED | PASS_WITH_NOTES | PASS`;
 - `audit_user_decision: pending`;
+- `accepted_audit_id: null`;
 - `render_authorized_by_user: no`.
 
-The audit gate is still closed when the overall status is `PASS` or `PASS_WITH_NOTES`. Stop after presenting the report. The next turn must contain an explicit user decision for this exact report, for example `accept audit & render`, before rendering can be routed. A repair request or a new spec decision routes back to Figure Spec or Build and invalidates this report.
+The audit gate is still closed when the overall status is `PASS` or `PASS_WITH_NOTES`. Stop after presenting the report. The next user turn must contain an explicit decision for this exact report, for example `accept audit & render`, and record `accepted_audit_id` equal to `audit_id`. A repair request or a new spec decision routes back to Figure Spec or Build and invalidates this report.

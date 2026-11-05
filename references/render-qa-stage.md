@@ -2,7 +2,7 @@
 
 ## Preconditions
 
-Confirm that the current Figure Spec and Figure Code Spec are approved, the exact current audit report has `audit_report_status: complete` and `audit_user_decision: accepted`, the code matches the audited draft, the runtime and output paths are resolved, and the user explicitly authorized rendering after seeing that audit report.
+Confirm that the current Figure Spec and Figure Code Spec are approved, the exact current audit report has `audit_report_status: complete` and `audit_user_decision: accepted`, `accepted_audit_id` equals the current `audit_id`, the code matches the audited draft, the runtime and output paths are resolved, and the user explicitly authorized rendering after seeing that audit report.
 
 The rendering gate is a blocking assertion, not an inference:
 
@@ -10,9 +10,11 @@ The rendering gate is a blocking assertion, not an inference:
 
 `assert audit_user_decision == "accepted"`
 
+`assert accepted_audit_id == audit_id`
+
 `assert render_authorized_by_user == "yes"`
 
-Do not run a repair, re-audit, production render, or presentation command in the same turn that creates the audit report or repairs an audit finding. After repair, create a new audit report and stop again for a new user decision.
+The acceptance must arrive in a later user turn than the turn that produced the audit report. Do not run a repair, re-audit, production render, or presentation command in the same turn that creates the audit report or repairs an audit finding. After repair, create a new audit report and stop again for a new user decision.
 
 ## Render
 
